@@ -1,0 +1,41 @@
+﻿<h1>Directives</h1>
+<h3>Attribute Directive</h3>
+<h4>Pick a highlight color</h4>
+<div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<p [myHighlight]="color">
+    Highlight me!
+
+</p>
+<p [myHighlight]="color" [defaultColor]="'violet'">
+    Highlight me too!
+</p>
+
+<h3>{{title}}</h3>
+
+<span [ngSwitch]="color">Choice:
+    <span *ngSwitchCase="'lightgreen'"> Green</span>
+    <span *ngSwitchCase="'yellow'"> Yellow</span>
+    <span *ngSwitchCase="'cyan'"> Cyan</span>
+    <span *ngSwitchDefault> Default:{{color}}</span>
+</span>
+
+<p class="alert alert-success" *ngIf="names.length > 2">Currently there are more than 2 names!</p>
+<p class="alert alert-danger" *ngIf="names.length <= 2">Currently there are less than 2 names left!</p>
+
+<ul>
+    <li *ngFor="let nam of names" (click)="onNameClicked(nam)">{{ nam.name }}</li>
+
+</ul>
+
+<input type="text" [(ngModel)]="selectedName.name">
+<br />
+<button class="btn btn-default" (click)="onDeleteName()">Delete Name</button>
+<br><br>
+<input type="text" #nam>
+<br />
+<button class="btn btn-default" (click)="onAddName(nam)">Add Name</button>
+
